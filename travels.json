@@ -1,0 +1,190 @@
+[
+    {
+        "id": "shanghai",
+        "title": "上海",
+        "location": "中国 · 上海",
+        "type": "城市旅行",
+        "date": "2025",
+        "distance": "",
+        "route": "城市漫步",
+        "difficulty": "",
+        "image": "images/shanghai/shanghai.jpg",
+        "description": "城市漫步，记录上海的街道、建筑与生活气息。",
+        "photos": [
+            "images/shanghai/01.jpg",
+            "images/shanghai/02.jpg",
+            "images/shanghai/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "gansu",
+        "title": "甘肃 · 武威 · 张掖 · 兰州",
+        "location": "中国 · 甘肃",
+        "type": "旅行路线",
+        "date": "2025",
+        "distance": "",
+        "route": "河西走廊旅行路线",
+        "difficulty": "",
+        "image": "images/gansu/gansu.jpg",
+        "description": "穿越河西走廊，记录西北大地的辽阔与壮美。",
+        "photos": [
+            "images/gansu/01.jpg",
+            "images/gansu/02.jpg",
+            "images/gansu/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "yudushan",
+        "title": "玉渡山",
+        "location": "北京 · 延庆",
+        "type": "徒步",
+        "date": "2025",
+        "distance": "12km",
+        "route": "玉渡山徒步环线",
+        "difficulty": "★★★☆☆",
+        "image": "images/yudushan/yudushan.jpg",
+        "description": "山野徒步，探索自然路线，记录沿途风景。",
+        "photos": [
+            "images/yudushan/01.jpg",
+            "images/yudushan/02.jpg",
+            "images/yudushan/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "tenggeli",
+        "title": "腾格里沙漠",
+        "location": "内蒙古",
+        "type": "荒野徒步",
+        "date": "2025",
+        "distance": "25km",
+        "route": "腾格里沙漠穿越路线",
+        "difficulty": "★★★★☆",
+        "image": "images/tenggeli/tenggeli.jpg",
+        "description": "穿越沙漠，感受荒野、星空与自然力量。",
+        "photos": [
+            "images/tenggeli/01.jpg",
+            "images/tenggeli/02.jpg",
+            "images/tenggeli/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "wutaishan",
+        "title": "五台山",
+        "location": "山西",
+        "type": "山地徒步",
+        "date": "2025",
+        "distance": "30km",
+        "route": "五台山朝台路线",
+        "difficulty": "★★★★☆",
+        "image": "images/wutaishan/wutaishan.jpg",
+        "description": "行走山间，感受自然、寺庙与历史交织的氛围。",
+        "photos": [
+            "images/wutaishan/01.jpg",
+            "images/wutaishan/02.jpg",
+            "images/wutaishan/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "qinhuangdao",
+        "title": "秦皇岛",
+        "location": "河北 · 秦皇岛",
+        "type": "海边旅行",
+        "date": "2025",
+        "distance": "",
+        "route": "沿海旅行路线",
+        "difficulty": "",
+        "image": "images/qinhuangdao/qinhuangdao.jpg",
+        "description": "海边旅行记录，寻找沿海城市的宁静时刻。",
+        "photos": [
+            "images/qinhuangdao/01.jpg",
+            "images/qinhuangdao/02.jpg",
+            "images/qinhuangdao/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "shuazigou",
+        "title": "刷子沟 · 马驹沟",
+        "location": "北京",
+        "type": "徒步",
+        "date": "2025",
+        "distance": "15km",
+        "route": "刷子沟-马驹沟穿越",
+        "difficulty": "★★★☆☆",
+        "image": "images/shuazigou/shuazigou.jpg",
+        "description": "北京周边经典户外路线记录。",
+        "photos": [
+            "images/shuazigou/01.jpg",
+            "images/shuazigou/02.jpg",
+            "images/shuazigou/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "xiaowutai",
+        "title": "小五台 · 辉川",
+        "location": "河北",
+        "type": "高山徒步",
+        "date": "2025",
+        "distance": "20km",
+        "route": "小五台山地路线",
+        "difficulty": "★★★★★",
+        "image": "images/xiaowutai/xiaowutai.jpg",
+        "description": "挑战高山路线，记录山野中的每一步。",
+        "photos": [
+            "images/xiaowutai/01.jpg",
+            "images/xiaowutai/02.jpg",
+            "images/xiaowutai/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "daheifeng",
+        "title": "大黑峰",
+        "location": "北京",
+        "type": "登山徒步",
+        "date": "2025",
+        "distance": "8km",
+        "route": "大黑峰登山路线",
+        "difficulty": "★★☆☆☆",
+        "image": "images/daheifeng/daheifeng.jpg",
+        "description": "城市周边登山记录，享受自然与挑战。",
+        "photos": [
+            "images/daheifeng/01.jpg",
+            "images/daheifeng/02.jpg",
+            "images/daheifeng/03.jpg"
+        ]
+    },
+
+
+    {
+        "id": "xiangbala",
+        "title": "香八拉",
+        "location": "北京",
+        "type": "徒步",
+        "date": "2025",
+        "distance": "18km",
+        "route": "香山-八大处路线",
+        "difficulty": "★★★☆☆",
+        "image": "images/xiangbala/xiangbala.jpg",
+        "description": "北京经典徒步路线，记录城市之外的自然风景。",
+        "photos": [
+            "images/xiangbala/01.jpg",
+            "images/xiangbala/02.jpg",
+            "images/xiangbala/03.jpg"
+        ]
+    }
+]
