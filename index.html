@@ -1,33 +1,183 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Willa Travel</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Willa Travel</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
-    <section class="hero">
 
-        <div class="hero-content">
+<!-- 顶部导航 -->
 
-            <h1 class="title">Willa</h1>
+<header class="navbar" id="navbar">
 
-            <p class="subtitle">Travel · Hiking · Photography</p>
 
-        </div>
+    <div class="nav-logo">
+        Willa Travel 🌿
+    </div>
 
-    </section>
-    <section class="travels">
 
-    <h2>My Travels</h2>
-    <div class="filters">
+    <nav>
+
+        <a href="index.html">
+            首页
+        </a>
+
+
+        <a href="#travels">
+            足迹
+        </a>
+
+
+        <a href="#about">
+            关于我
+        </a>
+
+
+    </nav>
+
+
+</header>
+
+
+
+
+
+<!-- 首页封面 -->
+
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+
+        <h1 class="title">
+            Willa
+        </h1>
+
+
+        <p class="subtitle">
+            Travel · Hiking · Photography
+        </p>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+<!-- 关于我 -->
+
+
+<section id="about" class="about">
+
+
+<h2>
+About Me
+</h2>
+
+
+<p>
+
+记录徒步、荒野、城市与海边旅行。<br>
+
+用照片保存每一次出发，与自然相遇的瞬间。
+
+</p>
+
+
+
+<div class="about-stats">
+
+
+<div>
+
+<strong>
+10+
+</strong>
+
+<span>
+目的地
+</span>
+
+</div>
+
+
+
+<div>
+
+<strong>
+Hiking
+</strong>
+
+<span>
+徒步记录
+</span>
+
+</div>
+
+
+
+<div>
+
+<strong>
+Photos
+</strong>
+
+<span>
+旅行照片
+</span>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- 旅行区域 -->
+
+
+<section id="travels" class="travels">
+
+
+<h2>
+My Travels
+</h2>
+
+
+
+
+
+<div class="filters">
+
 
 <button data-type="全部">
 全部
 </button>
+
 
 
 <button data-type="徒步">
@@ -35,31 +185,48 @@
 </button>
 
 
-<button data-type="荒野徒步">
+
+<button data-type="荒野">
 🏜 荒野
 </button>
 
 
-<button data-type="城市旅行">
+
+<button data-type="城市">
 🏙 城市
 </button>
 
 
-<button data-type="海边旅行">
+
+<button data-type="海边">
 🌊 海边
 </button>
 
 
+
 </div>
 
-    <div id="travel-list" class="cards">
 
-    </div>
+
+
+
+<div id="travel-list" class="cards">
+
+
+</div>
+
+
+
 
 </section>
 
 
+
+
+
 <script src="script.js"></script>
 
+
 </body>
+
 </html>

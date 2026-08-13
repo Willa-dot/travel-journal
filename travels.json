@@ -3,7 +3,8 @@
         "id": "shanghai",
         "title": "上海",
         "location": "中国 · 上海",
-        "type": "城市旅行",
+        "subtitle": "城市旅行",
+        "type": "城市",
         "date": "2025",
         "distance": "",
         "route": "城市漫步",
@@ -13,7 +14,17 @@
         "photos": [
             "images/shanghai/01.jpg",
             "images/shanghai/02.jpg",
-            "images/shanghai/03.jpg"
+            "images/shanghai/03.jpg",
+            "images/shanghai/04.jpg",
+            "images/shanghai/05.jpg",
+            "images/shanghai/06.jpg",
+            "images/shanghai/07.jpg",
+            "images/shanghai/08.jpg",
+            "images/shanghai/09.jpg",
+            "images/shanghai/10.jpg",
+            "images/shanghai/11.jpg",
+            "images/shanghai/12.jpg"
+           
         ]
     },
 
@@ -22,7 +33,8 @@
         "id": "gansu",
         "title": "甘肃 · 武威 · 张掖 · 兰州",
         "location": "中国 · 甘肃",
-        "type": "旅行路线",
+        "subtitle": "大西北",
+        "type": "城市",
         "date": "2025",
         "distance": "",
         "route": "河西走廊旅行路线",
@@ -32,17 +44,87 @@
         "photos": [
             "images/gansu/01.jpg",
             "images/gansu/02.jpg",
-            "images/gansu/03.jpg"
+            "images/gansu/03.jpg",
+            "images/gansu/04.jpg",
+            "images/gansu/05.jpg",
+            "images/gansu/06.jpg",
+            "images/gansu/07.jpg",
+            "images/gansu/08.jpg",
+            "images/gansu/09.jpg",
+            "images/gansu/10.jpg"
+            
         ]
     },
+    {
+    "id": "beijing",
+    "title": "北京",
+    "location": "北京",
+    "subtitle": "Citywalk",
+    "type": "城市",
+    "date": "2026",
+    "distance": "",
+    "image": "images/beijing/beijing.jpg",
+    "description": "穿梭于北京的街巷与城市肌理，在老建筑、咖啡馆与人文风景之间，感受这座城市独有的时间痕迹。",
+    "photos": [
+        "images/beijing/01.jpg",
+        "images/beijing/02.jpg",
+        "images/beijing/03.jpg",
+        "images/beijing/04.jpg",
+        "images/beijing/05.jpg"
+    ]
+    },
+    {
+    "id": "chengdu",
+    "title": "成都",
+    "location": "四川 成都",
+    "subtitle": "看看高山、逛逛小巷",
+    "type": "城市",
+    "date": "2026",
+    "distance": "",
+    "image": "images/chengdu/chengdu.jpg",
+    "description": "慢下来探索成都，从街头烟火到城市角落，在悠闲的步调中感受这座城市温暖而自由的气息。",
+    "photos": [
+        "images/chengdu/01.jpg",
+        "images/chengdu/02.jpg",
+        "images/chengdu/03.jpg",
+        "images/chengdu/04.jpg",
+        "images/chengdu/05.jpg",
+        "images/chengdu/06.jpg",
+        "images/chengdu/07.jpg",
+        "images/chengdu/08.jpg",
+        "images/chengdu/09.jpg",
+        "images/chengdu/10.jpg",
+        "images/chengdu/11.jpg",
+        "images/chengdu/12.jpg",
+        "images/chengdu/13.jpg",
+        "images/chengdu/14.jpg",
+        "images/chengdu/15.jpg",
+        "images/chengdu/16.jpg",
+        "images/chengdu/17.jpg",
+        "images/chengdu/18.jpg",
+        "images/chengdu/19.jpg",
+        "images/chengdu/20.jpg",
+        "images/chengdu/21.jpg",
+        "images/chengdu/22.jpg",
+        "images/chengdu/23.jpg",
+        "images/chengdu/24.jpg",
+        "images/chengdu/25.jpg",
+        "images/chengdu/26.jpg",
+        "images/chengdu/27.jpg",
+        "images/chengdu/28.jpg",
+        "images/chengdu/29.jpg"
+    ]
+    },
+    
 
 
     {
         "id": "yudushan",
-        "title": "玉渡山",
+        "title": "玉渡山·龙庆峡",
         "location": "北京 · 延庆",
+        "subtitle": "京郊小山",
         "type": "徒步",
-        "date": "2025",
+        "date": "2026",
         "distance": "12km",
         "route": "玉渡山徒步环线",
         "difficulty": "★★★☆☆",
@@ -51,7 +133,11 @@
         "photos": [
             "images/yudushan/01.jpg",
             "images/yudushan/02.jpg",
-            "images/yudushan/03.jpg"
+            "images/yudushan/03.jpg",
+            "images/yudushan/04.jpg",
+            "images/yudushan/05.jpg",
+            "images/yudushan/06.jpg"
+
         ]
     },
 
@@ -60,9 +146,10 @@
         "id": "tenggeli",
         "title": "腾格里沙漠",
         "location": "内蒙古",
-        "type": "荒野徒步",
-        "date": "2025",
-        "distance": "25km",
+        "subtitle": "中国第四大沙漠-五湖穿越",
+        "type": "徒步",
+        "date": "2026",
+        "distance": "50km",
         "route": "腾格里沙漠穿越路线",
         "difficulty": "★★★★☆",
         "image": "images/tenggeli/tenggeli.jpg",
@@ -70,7 +157,35 @@
         "photos": [
             "images/tenggeli/01.jpg",
             "images/tenggeli/02.jpg",
-            "images/tenggeli/03.jpg"
+            "images/tenggeli/03.jpg",
+            "images/tenggeli/04.jpg",
+            "images/tenggeli/05.jpg",
+            "images/tenggeli/06.jpg",
+            "images/tenggeli/07.jpg",
+            "images/tenggeli/08.jpg",
+            "images/tenggeli/09.jpg",
+            "images/tenggeli/10.jpg",
+            "images/tenggeli/11.jpg",
+            "images/tenggeli/12.jpg",
+            "images/tenggeli/13.jpg",
+            "images/tenggeli/14.jpg",
+            "images/tenggeli/15.jpg",
+            "images/tenggeli/16.jpg",
+            "images/tenggeli/17.jpg",
+            "images/tenggeli/18.jpg",
+            "images/tenggeli/19.jpg",
+            "images/tenggeli/20.jpg",
+            "images/tenggeli/21.jpg",
+            "images/tenggeli/22.jpg",
+            "images/tenggeli/23.jpg",
+            "images/tenggeli/24.jpg",
+            "images/tenggeli/25.jpg",
+            "images/tenggeli/26.jpg",
+            "images/tenggeli/27.jpg",
+            "images/tenggeli/28.jpg",
+            "images/tenggeli/29.jpg"
+
+
         ]
     },
 
@@ -79,9 +194,10 @@
         "id": "wutaishan",
         "title": "五台山",
         "location": "山西",
-        "type": "山地徒步",
-        "date": "2025",
-        "distance": "30km",
+        "subtitle": "一半佛国，一般山野",
+        "type": "徒步",
+        "date": "2026",
+        "distance": "70km",
         "route": "五台山朝台路线",
         "difficulty": "★★★★☆",
         "image": "images/wutaishan/wutaishan.jpg",
@@ -89,7 +205,39 @@
         "photos": [
             "images/wutaishan/01.jpg",
             "images/wutaishan/02.jpg",
-            "images/wutaishan/03.jpg"
+            "images/wutaishan/03.jpg",
+            "images/wutaishan/04.jpg",
+            "images/wutaishan/05.jpg",
+            "images/wutaishan/06.jpg",
+            "images/wutaishan/07.jpg",
+            "images/wutaishan/08.jpg",
+            "images/wutaishan/09.jpg",
+            "images/wutaishan/10.jpg",
+            "images/wutaishan/11.jpg",
+            "images/wutaishan/12.jpg",
+            "images/wutaishan/13.jpg",
+            "images/wutaishan/14.jpg",
+            "images/wutaishan/15.jpg",
+            "images/wutaishan/16.jpg",
+            "images/wutaishan/17.jpg",
+            "images/wutaishan/18.jpg",
+            "images/wutaishan/19.jpg",
+            "images/wutaishan/20.jpg",
+            "images/wutaishan/21.jpg",
+            "images/wutaishan/22.jpg",
+            "images/wutaishan/23.jpg",
+            "images/wutaishan/24.jpg",
+            "images/wutaishan/25.jpg",
+            "images/wutaishan/26.jpg",
+            "images/wutaishan/27.jpg",
+            "images/wutaishan/28.jpg",
+            "images/wutaishan/29.jpg",
+            "images/wutaishan/30.jpg"
+
+
+            
+
+
         ]
     },
 
@@ -98,8 +246,9 @@
         "id": "qinhuangdao",
         "title": "秦皇岛",
         "location": "河北 · 秦皇岛",
-        "type": "海边旅行",
-        "date": "2025",
+        "subtitle": "第一次看海",
+        "type": "海边",
+        "date": "2026",
         "distance": "",
         "route": "沿海旅行路线",
         "difficulty": "",
@@ -108,18 +257,48 @@
         "photos": [
             "images/qinhuangdao/01.jpg",
             "images/qinhuangdao/02.jpg",
-            "images/qinhuangdao/03.jpg"
+            "images/qinhuangdao/03.jpg",
+            "images/qinhuangdao/04.jpg",
+            "images/qinhuangdao/05.jpg",
+            "images/qinhuangdao/06.jpg",
+            "images/qinhuangdao/07.jpg",
+            "images/qinhuangdao/08.jpg"
+            
+
         ]
     },
-
+    {
+    "id": "zhangbeicaoyuan",
+    "title": "张北草原",
+    "location": "河北 张家口",
+    "subtitle": "草原天路",
+    "type": "荒野",
+    "date": "2026",
+    "distance": "",
+    "image": "images/zhangbeicaoyuan/zhangbeicaoyuan.jpg",
+    "description": "奔赴北方草原，在辽阔天地之间徒步与探索，感受风、草原与自然带来的自由力量。",
+    "photos": [
+        "images/zhangbeicaoyuan/01.jpg",
+        "images/zhangbeicaoyuan/02.jpg",
+        "images/zhangbeicaoyuan/03.jpg",
+        "images/zhangbeicaoyuan/04.jpg",
+        "images/zhangbeicaoyuan/05.jpg",
+        "images/zhangbeicaoyuan/06.jpg",
+        "images/zhangbeicaoyuan/07.jpg",
+        "images/zhangbeicaoyuan/08.jpg",
+        "images/zhangbeicaoyuan/09.jpg"
+        
+    ]
+    },
 
     {
         "id": "shuazigou",
         "title": "刷子沟 · 马驹沟",
-        "location": "北京",
+        "location": "河北 张家口",
+        "subtitle": "人少景美的短途徒步",
         "type": "徒步",
-        "date": "2025",
-        "distance": "15km",
+        "date": "2026",
+        "distance": "10km",
         "route": "刷子沟-马驹沟穿越",
         "difficulty": "★★★☆☆",
         "image": "images/shuazigou/shuazigou.jpg",
@@ -127,7 +306,16 @@
         "photos": [
             "images/shuazigou/01.jpg",
             "images/shuazigou/02.jpg",
-            "images/shuazigou/03.jpg"
+            "images/shuazigou/03.jpg",
+            "images/shuazigou/04.jpg",
+            "images/shuazigou/05.jpg",
+            "images/shuazigou/06.jpg",
+            "images/shuazigou/07.jpg",
+            "images/shuazigou/08.jpg",
+            "images/shuazigou/09.jpg"
+            
+
+
         ]
     },
 
@@ -135,10 +323,11 @@
     {
         "id": "xiaowutai",
         "title": "小五台 · 辉川",
-        "location": "河北",
-        "type": "高山徒步",
-        "date": "2025",
-        "distance": "20km",
+        "location": "河北 张家口",
+        "type": "徒步",
+        "subtitle": "山地徒步，赏金莲花",
+        "date": "2026",
+        "distance": "17km",
         "route": "小五台山地路线",
         "difficulty": "★★★★★",
         "image": "images/xiaowutai/xiaowutai.jpg",
@@ -146,7 +335,18 @@
         "photos": [
             "images/xiaowutai/01.jpg",
             "images/xiaowutai/02.jpg",
-            "images/xiaowutai/03.jpg"
+            "images/xiaowutai/03.jpg",
+            "images/xiaowutai/04.jpg",
+            "images/xiaowutai/05.jpg",
+            "images/xiaowutai/06.jpg",
+            "images/xiaowutai/07.jpg",
+            "images/xiaowutai/08.jpg",
+            "images/xiaowutai/09.jpg",
+            "images/xiaowutai/10.jpg",
+            "images/xiaowutai/11.jpg",
+            "images/xiaowutai/12.jpg",
+            "images/xiaowutai/13.jpg"
+            
         ]
     },
 
@@ -154,10 +354,11 @@
     {
         "id": "daheifeng",
         "title": "大黑峰",
-        "location": "北京",
-        "type": "登山徒步",
-        "date": "2025",
-        "distance": "8km",
+        "location": "河北 张家口",
+        "subtitle": "尝山杏，赏野花",
+        "type": "徒步",
+        "date": "2026",
+        "distance": "14km",
         "route": "大黑峰登山路线",
         "difficulty": "★★☆☆☆",
         "image": "images/daheifeng/daheifeng.jpg",
@@ -165,7 +366,18 @@
         "photos": [
             "images/daheifeng/01.jpg",
             "images/daheifeng/02.jpg",
-            "images/daheifeng/03.jpg"
+            "images/daheifeng/03.jpg",
+            "images/daheifeng/04.jpg",
+            "images/daheifeng/05.jpg",
+            "images/daheifeng/06.jpg",
+            "images/daheifeng/07.jpg",
+            "images/daheifeng/08.jpg",
+            "images/daheifeng/09.jpg",
+            "images/daheifeng/10.jpg",
+            "images/daheifeng/11.jpg",
+            "images/daheifeng/12.jpg"
+
+
         ]
     },
 
@@ -174,8 +386,9 @@
         "id": "xiangbala",
         "title": "香八拉",
         "location": "北京",
+        "subtitle": "香山、八大处拉练",
         "type": "徒步",
-        "date": "2025",
+        "date": "2026",
         "distance": "18km",
         "route": "香山-八大处路线",
         "difficulty": "★★★☆☆",
@@ -184,7 +397,16 @@
         "photos": [
             "images/xiangbala/01.jpg",
             "images/xiangbala/02.jpg",
-            "images/xiangbala/03.jpg"
+            "images/xiangbala/03.jpg",
+            "images/xiangbala/04.jpg",
+            "images/xiangbala/05.jpg",
+            "images/xiangbala/06.jpg",
+            "images/xiangbala/07.jpg",
+            "images/xiangbala/08.jpg",
+            "images/xiangbala/09.jpg",
+            "images/xiangbala/10.jpg",
+            "images/xiangbala/11.jpg",
+            "images/xiangbala/12.jpg"
         ]
     }
 ]

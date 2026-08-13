@@ -1,138 +1,427 @@
-fetch("travels.json")
-
-.then(response=>response.json())
-
-.then(travels=>{
-
+// ========================================
+// 获取旅行 ID
+// ========================================
 
 const params =
-new URLSearchParams(
-window.location.search
-);
+    new URLSearchParams(
+        window.location.search
+    );
+
+const id =
+    params.get("id");
 
 
-const id=params.get("id");
+// ========================================
+// 图片路径转换
+// ========================================
 
+function getCompressedImage(path) {
 
-const travel =
-travels.find(item=>item.id===id);
+    if (!path) {
+        return "";
+    }
 
+    if (
+        path.includes(
+            "images_compressed/"
+        )
+    ) {
+        return path;
+    }
 
-
-document.getElementById("title").innerHTML =
-travel.title;
-
-
-document.getElementById("location").innerHTML =
-travel.location;
-document.getElementById("type").innerHTML =
-"🥾 " + travel.type;
-
-
-document.getElementById("date").innerHTML =
-"📅 " + travel.date;
-
-
-if(travel.distance){
-
-document.getElementById("distance").innerHTML =
-"📏 " + travel.distance;
-
-}
-else{
-
-document.getElementById("distance").style.display="none";
-
+    return path.replace(
+        /^images\//,
+        "images_compressed/"
+    );
 }
 
 
+// ========================================
+// 读取 travels.json
+// ========================================
 
-document.getElementById("route").innerHTML =
-"🗺 " + travel.route;
+fetch("travels.json")
+
+    .then(response => {
+
+        if (!response.ok) {
+            throw new Error(
+                "travels.json 读取失败：" +
+                response.status
+            );
+        }
+
+        return response.json();
+
+    })
+
+    .then(travels => {
+
+        const travel =
+            travels.find(
+                item => item.id === id
+            );
 
 
+        if (!travel) {
 
-if(travel.difficulty){
+            document.body.innerHTML =
+                "<h2>没有找到该旅行记录</h2>";
 
-document.getElementById("difficulty").innerHTML =
-"⭐ 难度：" + travel.difficulty;
+            return;
+        }
 
+
+        // ==================================
+        // 标题
+        // ==================================
+
+        document.getElementById(
+            "title"
+        ).innerText =
+            travel.title;
+
+
+        // ==================================
+        // 地点
+        // ==================================
+
+        document.getElementById(
+            "location"
+        ).innerText =
+            travel.location;
+
+
+        // ==================================
+        // 信息
+        // ==================================
+
+        const info =
+            document.querySelector(
+                ".info"
+            );
+
+        info.innerHTML = "";
+
+
+        function addInfo(text) {
+
+            if (text) {
+
+                const p =
+                    document.createElement(
+                        "p"
+                    );
+
+                p.innerText =
+                    text;
+
+                info.appendChild(p);
+            }
+        }
+
+
+        addInfo(travel.type);
+
+        addInfo(travel.date);
+
+
+        if (travel.distance) {
+
+            addInfo(
+                "📏 " +
+                travel.distance
+            );
+        }
+
+
+        addInfo(travel.route);
+
+        addInfo(travel.difficulty);
+
+
+        // ==================================
+        // 封面
+        // ==================================
+
+        const cover =
+            document.getElementById(
+                "cover"
+            );
+
+
+        const compressedCover =
+            getCompressedImage(
+                travel.image
+            );
+
+
+        cover.src =
+            compressedCover;
+
+
+        cover.alt =
+            travel.title;
+
+
+        cover.loading =
+            "lazy";
+
+
+        // ==================================
+        // 描述
+        // ==================================
+
+        document.getElementById(
+            "description"
+        ).innerText =
+            travel.description;
+
+
+        // ==================================
+        // 先读取照片列表
+        // ==================================
+
+        return fetch("photos.json")
+
+            .then(response => {
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "photos.json 读取失败"
+                    );
+
+                }
+
+                return response.json();
+
+            })
+
+            .then(photoData => {
+
+                return {
+                    travel,
+                    photoData
+                };
+
+            })
+
+            .catch(error => {
+
+                console.warn(
+                    "photos.json 不可用，使用 travels.json 中的 photos",
+                    error
+                );
+
+                return {
+                    travel,
+                    photoData: null
+                };
+
+            });
+
+    })
+
+    .then(result => {
+
+        if (!result) {
+            return;
+        }
+
+
+        const travel =
+            result.travel;
+
+
+        const photoData =
+            result.photoData;
+
+
+        // ==================================
+        // 获取照片
+        // ==================================
+
+        let photos = [];
+
+
+        // 优先使用 photos.json
+
+        if (
+            photoData &&
+            photoData[travel.id]
+        ) {
+
+            photos =
+                photoData[travel.id];
+
+        }
+
+
+        // 如果没有 photos.json
+        // 则使用 travels.json
+
+        else {
+
+            photos =
+                travel.photos || [];
+
+            photos =
+                photos.map(
+                    getCompressedImage
+                );
+
+        }
+
+
+        // ==================================
+        // 图片墙
+        // ==================================
+
+        const gallery =
+            document.querySelector(
+                ".gallery"
+            );
+
+
+        gallery.innerHTML = "";
+
+
+        photos.forEach(photo => {
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            img.src =
+                photo;
+
+
+            img.alt =
+                travel.title;
+
+
+            img.loading =
+                "lazy";
+
+
+            img.className =
+                "gallery-img";
+
+
+            gallery.appendChild(img);
+
+
+            img.onclick =
+                function () {
+
+                    openLightbox(
+                        photo
+                    );
+
+                };
+
+        });
+
+
+        // ==================================
+        // 封面点击放大
+        // ==================================
+
+        const cover =
+            document.getElementById(
+                "cover"
+            );
+
+
+        cover.onclick =
+            function () {
+
+                openLightbox(
+                    getCompressedImage(
+                        travel.image
+                    )
+                );
+
+            };
+
+    })
+
+    .catch(error => {
+
+        console.error(
+            "读取旅行数据失败：",
+            error
+        );
+
+    });
+
+
+// ========================================
+// 图片放大
+// ========================================
+
+const lightbox =
+    document.querySelector(
+        ".lightbox"
+    );
+
+
+const lightboxImg =
+    document.getElementById(
+        "lightbox-img"
+    );
+
+
+// ========================================
+// 打开
+// ========================================
+
+function openLightbox(src) {
+
+    lightbox.style.display =
+        "flex";
+
+    lightboxImg.src =
+        src;
 }
-else{
-
-document.getElementById("difficulty").style.display="none";
-
-}
 
 
-document.getElementById("cover").src =
-travel.image;
-const cover =
-document.getElementById("cover");
+// ========================================
+// 关闭
+// ========================================
+
+const close =
+    document.querySelector(
+        ".close"
+    );
 
 
-cover.onclick = function(){
+close.onclick =
+    function () {
+
+        lightbox.style.display =
+            "none";
+
+    };
 
 
-    document.querySelector(".lightbox")
-    .style.display="flex";
+// ========================================
+// 点击背景关闭
+// ========================================
 
+lightbox.onclick =
+    function (e) {
 
-    document.getElementById("lightbox-img")
-    .src=this.src;
+        if (
+            e.target === lightbox
+        ) {
 
+            lightbox.style.display =
+                "none";
 
-};
+        }
 
-
-document.getElementById("description").innerHTML =
-travel.description;
-
-
-
-const gallery =
-document.querySelector(".gallery");
-
-
-
-travel.photos.forEach(photo => {
-
-
-const img = document.createElement("img");
-
-
-img.src = photo;
-
-
-img.className = "gallery-img";
-
-
-// 点击放大
-img.onclick = function(){
-
-    document.querySelector(".lightbox")
-    .style.display = "flex";
-
-
-    document.getElementById("lightbox-img")
-    .src = this.src;
-
-};
-
-
-gallery.appendChild(img);
-
-
-});
-
-
-document.querySelector(".close")
-.onclick = function(){
-
-    document.querySelector(".lightbox")
-    .style.display = "none";
-
-};
-
-
-});
+    };

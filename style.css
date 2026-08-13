@@ -1,377 +1,60 @@
-/* 去掉浏览器默认边距 */
+/* =========================
+   全局
+========================= */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
 }
 
-/* 整个网页 */
+
 body {
-    font-family: Arial, sans-serif;
-}
 
-/* 首页 */
-.hero {
-    height: 100vh;
-    background-image: url("images/cover.jpg");
-    background-size: contain;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-repeat: no-repeat;
-    background-color:#dce4e8;
-    border-radius:5px;
-}
+    font-family:
+    Arial,
+    "Microsoft YaHei",
+    sans-serif;
 
-/* 中间内容 */
-.hero-content {
-    text-align: center;
-}
-
-.hero-content h1 {
-
-    font-size:72px;
-
-    font-weight:300;
-
-    letter-spacing:8px;
-
-    color:#ffffff;
-
-    font-family:"Georgia", serif;
-
-}
-
-.hero-content p {
-
-    margin-top:20px;
-
-    font-size:20px;
-
-    letter-spacing:4px;
-
-    color:#f3eee5;
-
-    font-family:"Arial", sans-serif;
-
-}
-.title{
-
-    animation:fadeIn 2s ease;
-
-}
-
-
-.subtitle{
-
-    animation:fadeIn 3s ease;
+    color:#333;
 
 }
 
 
 
-@keyframes fadeIn{
-
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(30px);
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-
-}
-.travels{
-
-    padding:100px 50px;
-
-    background:#f1eadf;
-
-    text-align:center;
-
-}
-
-
-
-.travels h2{
-
-    font-size:48px;
-
-    font-family:Georgia,serif;
-
-    margin-bottom:60px;
-
-}
-
-
-
-.cards{
-
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
-
-
-    gap:40px;
-
-}
-
-
-
-.card{
-
-    background:white;
-
-    border-radius:25px;
-
-    overflow:hidden;
-
-    transition:0.4s;
-
-    text-align:left;
-
-}
-
-
-
-.card:hover{
-
-    transform:translateY(-12px);
-
-}
-
-
-
-.card img{
-
-    width:100%;
-
-    height:260px;
-
-    object-fit:cover;
-
-}
-
-
-
-.card-content{
-
-    padding:25px;
-
-}
-
-
-
-.card h3{
-
-    font-size:26px;
-
-    font-family:Georgia,serif;
-
-    margin-bottom:15px;
-
-}
-
-
-
-.card p{
-
-    color:#777;
-
-}
-
-
-
-.card span{
-
-    font-size:14px;
-
-    color:#999;
-
-}
-
-
-
-.description{
-
-    margin-top:15px;
-
-    line-height:1.6;
-
-    color:#555;
-
-}
-.travel-link{
+a {
 
     text-decoration:none;
 
     color:inherit;
 
 }
-.card a{
 
-    text-decoration:none;
 
-}
-.card h3,
-.card p,
-.card span{
 
-    text-decoration:none;
 
-}
-#cover{
 
-    width:55%;
+/* =========================
+   顶部导航
+========================= */
 
-    max-width:800px;
+.navbar {
 
-    height:450px;
 
-    object-fit:cover;
+    height:70px;
 
-    border-radius:30px;
+    display:flex;
 
-    margin:40px auto;
+    justify-content:space-between;
 
-    display:block;
+    align-items:center;
 
-}
-.cover-img{
+    padding:0 60px;
 
-    cursor:pointer;
-
-    transition:0.3s;
-
-}
-
-
-.cover-img:hover{
-
-    transform:scale(1.02);
-
-}
-.detail h1{
-
-    font-family:Georgia,serif;
-
-    font-size:48px;
-
-    margin-top:50px;
-
-    letter-spacing:2px;
-
-}
-.detail{
-
-    padding:80px 40px;
-
-    max-width:1200px;
-
-    margin:auto;
-
-}
-.detail h1{
-
-    margin-bottom:15px;
-
-}
-
-
-#location{
-
-    margin-bottom:25px;
-
-}
-.info{
-
-    margin-bottom:35px;
-
-}
-.cover-img{
-
-    margin-bottom:35px;
-
-}
-#description{
-
-    margin-bottom:30px;
-
-}
-.detail h2{
-
-    margin-bottom:25px;
-
-}
-.gallery{
-
-
-display:grid;
-
-
-grid-template-columns:
-repeat(3,1fr);
-
-
-gap:25px;
-
-
-margin-top:50px;
-
-
-}
-
-
-
-.gallery-img{
-
-
-width:100%;
-
-
-height:260px;
-
-
-object-fit:cover;
-
-
-border-radius:20px;
-
-
-cursor:pointer;
-
-
-transition:0.3s;
-
-
-}
-
-
-
-.gallery-img:hover{
-
-
-transform:scale(1.03);
-
-
-}
-.lightbox{
-
-    display:none;
 
     position:fixed;
 
@@ -381,171 +64,1061 @@ transform:scale(1.03);
 
     width:100%;
 
-    height:100%;
 
-    background:rgba(0,0,0,0.8);
+    z-index:1000;
 
-    justify-content:center;
 
-    align-items:center;
+    background:white;
 
-    z-index:999;
+
+    box-shadow:
+
+    0 3px 15px rgba(0,0,0,0.12);
+
 
 }
 
 
 
-.lightbox img{
+.nav-logo {
 
-    max-width:85%;
 
-    max-height:85%;
+    font-family:Georgia,serif;
 
-    border-radius:20px;
+    font-size:24px;
+
+    color:#4d6350;
+
 
 }
 
 
 
-.close{
+.navbar nav {
 
-    position:absolute;
-
-    top:40px;
-
-    right:60px;
-
-    color:white;
-
-    font-size:50px;
-
-    cursor:pointer;
-
-}
-.info{
 
     display:flex;
 
-    justify-content:center;
+    gap:35px;
 
-    flex-wrap:wrap;
-
-    gap:15px;
-
-    margin:25px auto;
 
 }
 
 
-.info p{
 
-    background:#f5f3ef;
+.navbar nav a {
 
-    padding:8px 18px;
-
-    border-radius:20px;
-
-    font-size:15px;
 
     color:#555;
 
-}
-@media(max-width:768px){
+    font-size:16px;
 
-
-.detail{
-
-    padding:40px 20px;
 
 }
 
 
-.detail h1{
+.navbar nav a:hover {
 
-    font-size:36px;
+
+    color:#4d6350;
+
 
 }
 
 
 
-.info{
 
-    gap:10px;
-
-}
-
+/* =========================
+   首页 Hero
+========================= */
 
 
-.info p{
-
-    font-size:14px;
-
-    padding:6px 12px;
-
-}
+.hero {
 
 
-
-.cover-img{
-
-    width:100%;
-
-    height:auto;
-
-}
+    height:100vh;
 
 
+    background-image:
 
-.gallery{
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:15px;
-
-}
+    url("images/cover.jpg");
 
 
-
-.gallery-img{
-
-    height:180px;
-
-}
+    background-size:contain;
 
 
-}
-.filters{
+    background-position:center;
+
 
     display:flex;
 
+
     justify-content:center;
+
+
+    align-items:center;
+
+
+    background-repeat:no-repeat;
+
+
+    background-color:#dce4e8;
+
+
+}
+
+.hero {
+
+    padding-top:70px;
+
+}
+
+.hero-content {
+
+
+    text-align:center;
+
+}
+
+
+
+.hero-content h1 {
+
+
+    font-size:72px;
+
+
+    font-weight:300;
+
+
+    letter-spacing:8px;
+
+
+    color:white;
+
+
+    font-family:Georgia,serif;
+
+}
+
+
+
+.hero-content p {
+
+
+    margin-top:20px;
+
+
+    font-size:20px;
+
+
+    letter-spacing:4px;
+
+
+    color:#f3eee5;
+
+}
+
+
+
+
+.title {
+
+
+    animation:fadeIn 2s ease;
+
+}
+
+
+
+.subtitle {
+
+
+    animation:fadeIn 3s ease;
+
+}
+
+
+
+
+
+@keyframes fadeIn {
+
+
+from {
+
+
+opacity:0;
+
+transform:translateY(30px);
+
+
+}
+
+
+
+to {
+
+
+opacity:1;
+
+transform:translateY(0);
+
+
+}
+
+
+}
+
+
+
+
+
+/* =========================
+   About
+========================= */
+
+
+.about {
+
+
+    padding:80px 30px;
+
+
+    text-align:center;
+
+
+    background:white;
+
+
+}
+
+
+
+.about h2 {
+
+
+    font-size:42px;
+
+
+    font-family:Georgia,serif;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+.about p {
+
+
+    line-height:2;
+
+
+    color:#666;
+
+
+}
+
+
+
+
+
+.about-stats {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:80px;
+
+
+    margin-top:45px;
+
+
+}
+
+
+
+.about-stats div {
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+.about-stats strong {
+
+
+    font-size:32px;
+
+
+    color:#4d6350;
+
+
+}
+
+
+
+.about-stats span {
+
+
+    margin-top:8px;
+
+
+    color:#777;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   My Travels
+========================= */
+
+
+.travels {
+
+
+    padding:100px 50px;
+
+
+    background:#f1eadf;
+
+
+    text-align:center;
+
+
+}
+
+
+
+.travels h2 {
+
+
+    font-size:48px;
+
+
+    font-family:Georgia,serif;
+
+
+    margin-bottom:60px;
+
+
+}
+
+
+
+
+
+
+/* 筛选按钮 */
+
+
+.filters {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
 
     gap:15px;
 
+
     margin:30px 0;
+
 
     flex-wrap:wrap;
 
+
 }
 
 
-.filters button{
+
+.filters button {
+
 
     border:none;
 
+
     padding:10px 22px;
+
 
     border-radius:25px;
 
+
     cursor:pointer;
 
+
     font-size:15px;
+
+
+    background:white;
+
 
 }
 
 
-.filters button:hover{
+
+.filters button:hover {
+
 
     transform:translateY(-2px);
 
+
+}
+
+
+
+
+
+
+/* =========================
+   卡片区域（重点修改）
+========================= */
+
+
+.cards {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+
+    repeat(auto-fill,280px);
+
+
+    gap:40px;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+
+.card {
+
+
+    width:280px;
+
+
+    background:white;
+
+
+    border-radius:25px;
+
+
+    overflow:hidden;
+
+
+    transition:0.4s;
+
+
+    text-align:left;
+
+
+}
+
+
+
+.card:hover {
+
+
+    transform:translateY(-12px);
+
+
+}
+
+
+
+
+.card img {
+
+
+    width:100%;
+
+
+    height:260px;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+.card-content {
+
+
+    padding:25px;
+
+
+}
+
+
+
+.card h3 {
+
+
+    font-size:26px;
+
+
+    font-family:Georgia,serif;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.card p {
+
+
+    color:#777;
+
+
+}
+
+
+
+.card span {
+
+
+    font-size:14px;
+
+
+    color:#999;
+
+
+}
+
+
+
+
+
+.travel-link {
+
+
+    text-decoration:none;
+
+
+    color:inherit;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   详情页
+========================= */
+
+
+.detail {
+
+
+    padding:80px 40px;
+
+
+    max-width:1200px;
+
+
+    margin:auto;
+
+
+}
+
+
+
+.back-btn {
+
+
+    display:inline-block;
+
+
+    margin-bottom:30px;
+
+
+    color:#4d6350;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+
+.detail h1 {
+
+
+    font-family:Georgia,serif;
+
+
+    font-size:48px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+#location {
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+.info {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    flex-wrap:wrap;
+
+
+    gap:15px;
+
+
+    margin:25px auto;
+
+
+}
+
+
+
+.info p {
+
+
+    background:#f5f3ef;
+
+
+    padding:8px 18px;
+
+
+    border-radius:20px;
+
+
+    font-size:15px;
+
+
+    color:#555;
+
+
+}
+
+
+
+#cover {
+
+
+    width:55%;
+
+
+    max-width:800px;
+
+
+    height:450px;
+
+
+    object-fit:cover;
+
+
+    border-radius:30px;
+
+
+    margin:40px auto;
+
+
+    display:block;
+
+
+}
+
+
+
+.cover-img {
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+#description {
+
+
+    margin-bottom:30px;
+
+
+    line-height:1.8;
+
+
+}
+
+
+
+.detail h2 {
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   图片墙
+========================= */
+
+
+.gallery {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+
+    repeat(3,1fr);
+
+
+    gap:25px;
+
+
+    margin-top:50px;
+
+
+}
+
+
+
+.gallery-img {
+
+
+    width:100%;
+
+
+    height:260px;
+
+
+    object-fit:cover;
+
+
+    border-radius:20px;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.gallery-img:hover {
+
+
+    transform:scale(1.03);
+
+
+}
+
+
+
+
+
+
+/* =========================
+   放大图片
+========================= */
+
+
+.lightbox {
+
+
+    display:none;
+
+
+    position:fixed;
+
+
+    top:0;
+
+
+    left:0;
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    background:rgba(0,0,0,.8);
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    z-index:999;
+
+
+}
+
+
+
+.lightbox img {
+
+
+    max-width:85%;
+
+
+    max-height:85%;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+.close {
+
+
+    position:absolute;
+
+
+    top:40px;
+
+
+    right:60px;
+
+
+    color:white;
+
+
+    font-size:50px;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+
+
+/* =========================
+   手机适配
+========================= */
+
+
+@media(max-width:768px){
+
+
+.navbar {
+
+
+    padding:0 20px;
+
+
+}
+
+
+
+.nav-logo {
+
+
+    font-size:18px;
+
+
+}
+
+
+
+.navbar nav {
+
+
+    gap:15px;
+
+
+}
+
+
+
+.hero {
+
+
+    height:70vh;
+
+
+}
+
+
+
+.hero-content h1 {
+
+
+    font-size:45px;
+
+
+}
+
+
+
+.about-stats {
+
+
+    gap:30px;
+
+
+}
+
+
+
+.cards {
+
+
+    grid-template-columns:280px;
+
+
+}
+
+
+
+.travels {
+
+
+    padding:60px 20px;
+
+
+}
+
+
+
+.detail {
+
+
+    padding:40px 20px;
+
+
+}
+
+
+
+#cover {
+
+
+    width:100%;
+
+
+    height:auto;
+
+
+}
+
+
+
+.gallery {
+
+
+    grid-template-columns:repeat(2,1fr);
+
+
+}
+
+
+
+.gallery-img {
+
+
+    height:180px;
+
+
+}
+
+
+}
+/* ================================
+   首页旅行卡片信息
+   ================================ */
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* 地点和分类 */
+
+.card-meta span {
+    display: inline-block;
+}
+
+
+/* 旅行特色 */
+
+.card-content small {
+    display: block;
+    margin-top: 6px;
 }
