@@ -3,49 +3,12 @@ let allTravels = [];
 const list = document.getElementById("travel-list");
 
 
-// ========================================
-// 图片路径转换
-// 原始路径：images/xxx/xxx.jpg
-// 网站路径：images_compressed/xxx/xxx.jpg
-// ========================================
-
-function getCompressedImage(path) {
-
-    if (!path) {
-        return "";
-    }
-
-    // 如果已经是压缩图片，就不重复处理
-    if (path.includes("images_compressed/")) {
-        return path;
-    }
-
-    // 把 images/ 替换成 images_compressed/
-    return path.replace(
-        /^images\//,
-        "images_compressed/"
-    );
-}
-
-
-// ========================================
+// ================================
 // 读取 travels.json
-// ========================================
+// ================================
 
 fetch("travels.json")
-
-    .then(response => {
-
-        if (!response.ok) {
-            throw new Error(
-                "travels.json 读取失败：" + response.status
-            );
-        }
-
-        return response.json();
-
-    })
-
+    .then(response => response.json())
     .then(data => {
 
         allTravels = data;
@@ -53,37 +16,57 @@ fetch("travels.json")
         showTravels(allTravels);
 
     })
-
     .catch(error => {
 
-        console.error(
-            "读取 travels.json 失败：",
-            error
-        );
+        console.error("读取 travels.json 失败：", error);
 
     });
 
 
-// ========================================
+// ================================
+// 获取压缩图片路径
+// ================================
+
+function getCompressedImage(path) {
+
+    // 例如：
+    // images/beijing/beijing.jpg
+    //
+    // 自动变成：
+    // images_compressed/beijing/beijing.jpg
+
+    if (!path) {
+        return "";
+    }
+
+    return path.replace(
+        /^images\//,
+        "images_compressed/"
+    );
+
+}
+
+
+// ================================
 // 显示旅行卡片
-// ========================================
+// ================================
 
 function showTravels(travels) {
 
     list.innerHTML = "";
 
-
     travels.forEach(travel => {
 
-        // 压缩后的封面图片
+        const originalImage = travel.image;
+
         const compressedImage =
-            getCompressedImage(travel.image);
+            getCompressedImage(originalImage);
 
 
         list.innerHTML += `
 
-        <a
-            href="travel.html?id=${travel.id}"
+        <a 
+            href="travel.html?id=${travel.id}" 
             class="travel-link"
         >
 
@@ -91,15 +74,16 @@ function showTravels(travels) {
 
                 <!-- 封面 -->
 
-                <img
+                <img 
                     src="${compressedImage}"
+                    data-original="${originalImage}"
                     alt="${travel.title}"
                     loading="lazy"
+                    decoding="async"
                 >
 
 
                 <div class="card-content">
-
 
                     <!-- 地点名称 -->
 
@@ -129,7 +113,6 @@ function showTravels(travels) {
                         ${travel.subtitle || ""}
                     </small>
 
-
                 </div>
 
             </div>
@@ -140,12 +123,49 @@ function showTravels(travels) {
 
     });
 
+
+    // ================================
+    // 压缩图片加载失败时
+    // 自动使用原图
+    // ================================
+
+    const images =
+        list.querySelectorAll("img");
+
+
+    images.forEach(img => {
+
+        img.onerror = function () {
+
+            const original =
+                this.dataset.original;
+
+
+            // 防止原图也加载失败时无限循环
+
+            if (
+                original &&
+                this.src !==
+                new URL(
+                    original,
+                    window.location.href
+                ).href
+            ) {
+
+                this.src = original;
+
+            }
+
+        };
+
+    });
+
 }
 
 
-// ========================================
+// ================================
 // 分类筛选
-// ========================================
+// ================================
 
 const buttons =
     document.querySelectorAll(
@@ -161,9 +181,9 @@ buttons.forEach(button => {
             this.dataset.type;
 
 
-        // ==================================
+        // =========================
         // 全部
-        // ==================================
+        // =========================
 
         if (type === "全部") {
 
@@ -172,9 +192,9 @@ buttons.forEach(button => {
         }
 
 
-        // ==================================
+        // =========================
         // 分类
-        // ==================================
+        // =========================
 
         else {
 

@@ -1,67 +1,28 @@
-// ========================================
-// 获取旅行 ID
-// ========================================
+const params = new URLSearchParams(
+    window.location.search
+);
 
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
-
-const id =
-    params.get("id");
+const id = params.get("id");
 
 
-// ========================================
-// 图片路径转换
-// ========================================
-
-function getCompressedImage(path) {
-
-    if (!path) {
-        return "";
-    }
-
-    if (
-        path.includes(
-            "images_compressed/"
-        )
-    ) {
-        return path;
-    }
-
-    return path.replace(
-        /^images\//,
-        "images_compressed/"
-    );
-}
-
-
-// ========================================
+// ================================
 // 读取 travels.json
-// ========================================
+// ================================
 
 fetch("travels.json")
 
-    .then(response => {
-
-        if (!response.ok) {
-            throw new Error(
-                "travels.json 读取失败：" +
-                response.status
-            );
-        }
-
-        return response.json();
-
-    })
+    .then(response => response.json())
 
     .then(travels => {
 
-        const travel =
-            travels.find(
-                item => item.id === id
-            );
+        const travel = travels.find(
+            item => item.id === id
+        );
 
+
+        // =========================
+        // 找不到旅行记录
+        // =========================
 
         if (!travel) {
 
@@ -69,37 +30,34 @@ fetch("travels.json")
                 "<h2>没有找到该旅行记录</h2>";
 
             return;
+
         }
 
 
-        // ==================================
+        // =========================
         // 标题
-        // ==================================
+        // =========================
 
-        document.getElementById(
-            "title"
-        ).innerText =
+        document.getElementById("title")
+            .innerText =
             travel.title;
 
 
-        // ==================================
+        // =========================
         // 地点
-        // ==================================
+        // =========================
 
-        document.getElementById(
-            "location"
-        ).innerText =
+        document.getElementById("location")
+            .innerText =
             travel.location;
 
 
-        // ==================================
-        // 信息
-        // ==================================
+        // =========================
+        // 信息区域
+        // =========================
 
         const info =
-            document.querySelector(
-                ".info"
-            );
+            document.querySelector(".info");
 
         info.innerHTML = "";
 
@@ -109,15 +67,14 @@ fetch("travels.json")
             if (text) {
 
                 const p =
-                    document.createElement(
-                        "p"
-                    );
+                    document.createElement("p");
 
-                p.innerText =
-                    text;
+                p.innerText = text;
 
                 info.appendChild(p);
+
             }
+
         }
 
 
@@ -129,9 +86,9 @@ fetch("travels.json")
         if (travel.distance) {
 
             addInfo(
-                "📏 " +
-                travel.distance
+                "📏 " + travel.distance
             );
+
         }
 
 
@@ -140,19 +97,21 @@ fetch("travels.json")
         addInfo(travel.difficulty);
 
 
-        // ==================================
+        // =========================
         // 封面
-        // ==================================
+        // =========================
 
         const cover =
-            document.getElementById(
-                "cover"
-            );
+            document.getElementById("cover");
+
+
+        const originalCover =
+            travel.image;
 
 
         const compressedCover =
             getCompressedImage(
-                travel.image
+                originalCover
             );
 
 
@@ -160,17 +119,35 @@ fetch("travels.json")
             compressedCover;
 
 
-        cover.alt =
-            travel.title;
+        cover.loading = "eager";
+
+        cover.decoding = "async";
 
 
-        cover.loading =
-            "lazy";
+        // 如果压缩封面不存在
+        // 自动退回原图
+
+        cover.onerror = function () {
+
+            if (
+                this.src !==
+                new URL(
+                    originalCover,
+                    window.location.href
+                ).href
+            ) {
+
+                this.src =
+                    originalCover;
+
+            }
+
+        };
 
 
-        // ==================================
+        // =========================
         // 描述
-        // ==================================
+        // =========================
 
         document.getElementById(
             "description"
@@ -178,105 +155,9 @@ fetch("travels.json")
             travel.description;
 
 
-        // ==================================
-        // 先读取照片列表
-        // ==================================
-
-        return fetch("photos.json")
-
-            .then(response => {
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "photos.json 读取失败"
-                    );
-
-                }
-
-                return response.json();
-
-            })
-
-            .then(photoData => {
-
-                return {
-                    travel,
-                    photoData
-                };
-
-            })
-
-            .catch(error => {
-
-                console.warn(
-                    "photos.json 不可用，使用 travels.json 中的 photos",
-                    error
-                );
-
-                return {
-                    travel,
-                    photoData: null
-                };
-
-            });
-
-    })
-
-    .then(result => {
-
-        if (!result) {
-            return;
-        }
-
-
-        const travel =
-            result.travel;
-
-
-        const photoData =
-            result.photoData;
-
-
-        // ==================================
-        // 获取照片
-        // ==================================
-
-        let photos = [];
-
-
-        // 优先使用 photos.json
-
-        if (
-            photoData &&
-            photoData[travel.id]
-        ) {
-
-            photos =
-                photoData[travel.id];
-
-        }
-
-
-        // 如果没有 photos.json
-        // 则使用 travels.json
-
-        else {
-
-            photos =
-                travel.photos || [];
-
-            photos =
-                photos.map(
-                    getCompressedImage
-                );
-
-        }
-
-
-        // ==================================
+        // =========================
         // 图片墙
-        // ==================================
+        // =========================
 
         const gallery =
             document.querySelector(
@@ -287,81 +168,184 @@ fetch("travels.json")
         gallery.innerHTML = "";
 
 
-        photos.forEach(photo => {
-
-            const img =
-                document.createElement(
-                    "img"
-                );
-
-
-            img.src =
-                photo;
+        // 防止封面重复出现在照片墙
+        const coverPath =
+            normalizePath(
+                travel.image
+            );
 
 
-            img.alt =
-                travel.title;
+        travel.photos.forEach(
+            photo => {
+
+                // 如果照片墙里有封面
+                // 就跳过
+
+                if (
+                    normalizePath(photo) ===
+                    coverPath
+                ) {
+
+                    return;
+
+                }
 
 
-            img.loading =
-                "lazy";
+                const img =
+                    document.createElement(
+                        "img"
+                    );
 
 
-            img.className =
-                "gallery-img";
+                // 原始图片
+                const originalPhoto =
+                    photo;
 
 
-            gallery.appendChild(img);
-
-
-            img.onclick =
-                function () {
-
-                    openLightbox(
+                // 压缩图片
+                const compressedPhoto =
+                    getCompressedImage(
                         photo
                     );
 
-                };
 
-        });
+                img.src =
+                    compressedPhoto;
 
 
-        // ==================================
+                img.loading =
+                    "lazy";
+
+
+                img.decoding =
+                    "async";
+
+
+                img.className =
+                    "gallery-img";
+
+
+                img.alt =
+                    travel.title;
+
+
+                // =====================
+                // 压缩图加载失败
+                // 自动使用原图
+                // =====================
+
+                img.onerror =
+                    function () {
+
+                        if (
+                            this.src !==
+                            new URL(
+                                originalPhoto,
+                                window.location.href
+                            ).href
+                        ) {
+
+                            this.src =
+                                originalPhoto;
+
+                        }
+
+                    };
+
+
+                gallery.appendChild(
+                    img
+                );
+
+
+                // =====================
+                // 点击放大
+                // =====================
+
+                img.onclick =
+                    function () {
+
+                        openLightbox(
+                            compressedPhoto
+                        );
+
+                    };
+
+            }
+        );
+
+
+        // =========================
         // 封面点击放大
-        // ==================================
-
-        const cover =
-            document.getElementById(
-                "cover"
-            );
-
+        // =========================
 
         cover.onclick =
             function () {
 
                 openLightbox(
-                    getCompressedImage(
-                        travel.image
-                    )
+                    compressedCover
                 );
 
             };
 
-    })
-
-    .catch(error => {
-
-        console.error(
-            "读取旅行数据失败：",
-            error
-        );
-
     });
 
 
-// ========================================
+// ================================
+// 获取压缩图片路径
+// ================================
+
+function getCompressedImage(
+    path
+) {
+
+    if (!path) {
+
+        return "";
+
+    }
+
+
+    return path.replace(
+        /^images\//,
+        "images_compressed/"
+    );
+
+}
+
+
+// ================================
+// 统一路径
+// 用于判断封面是否重复
+// ================================
+
+function normalizePath(
+    path
+) {
+
+    if (!path) {
+
+        return "";
+
+    }
+
+
+    return path
+        .replace(
+            /^\.?\//,
+            ""
+        )
+        .replace(
+            /^images_compressed\//,
+            "images/"
+        );
+
+}
+
+
+// ================================
 // 图片放大
-// ========================================
+// ================================
 
 const lightbox =
     document.querySelector(
@@ -375,23 +359,21 @@ const lightboxImg =
     );
 
 
-// ========================================
-// 打开
-// ========================================
-
 function openLightbox(src) {
 
     lightbox.style.display =
         "flex";
 
+
     lightboxImg.src =
         src;
+
 }
 
 
-// ========================================
+// ================================
 // 关闭
-// ========================================
+// ================================
 
 const close =
     document.querySelector(
@@ -408,9 +390,9 @@ close.onclick =
     };
 
 
-// ========================================
+// ================================
 // 点击背景关闭
-// ========================================
+// ================================
 
 lightbox.onclick =
     function (e) {
